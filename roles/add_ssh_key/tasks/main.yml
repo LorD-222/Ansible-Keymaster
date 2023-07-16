@@ -1,0 +1,6 @@
+---
+- name: Add public key to remote hosts
+  authorized_key:
+    user: "{{ user }}"
+    state: present
+    key: "{{ lookup('file', public_key_path) }}"

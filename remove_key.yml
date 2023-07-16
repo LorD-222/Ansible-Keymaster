@@ -1,0 +1,6 @@
+---
+- name: Remove SSH keys from hosts
+  hosts: all
+  become: yes
+  roles:
+    - remove_ssh_key

@@ -1,0 +1,4 @@
+---
+# Variables for the add_ssh_key role
+user: root
+public_key_path: ~/.ssh/id_rsa.pub
