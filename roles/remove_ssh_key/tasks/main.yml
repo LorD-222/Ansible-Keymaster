@@ -1,6 +1,7 @@
 ---
-- name: Remove public key from remote hosts
+- name: Ensure SSH public keys are absent for each user
   authorized_key:
-    user: "{{ user }}"
+    user: "{{ item.name }}"
     state: absent
-    key: "{{ lookup('file', public_key_path) }}"
+    key: "{{ lookup('file', item.public_key_path) }}"
+  with_items: "{{ users }}"

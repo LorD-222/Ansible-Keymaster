@@ -1,6 +1,7 @@
 ---
-- name: Add public key to remote hosts
+- name: Ensure SSH public keys are present for each user
   authorized_key:
-    user: "{{ user }}"
+    user: "{{ item.name }}"
     state: present
-    key: "{{ lookup('file', public_key_path) }}"
+    key: "{{ lookup('file', item.public_key_path) }}"
+  with_items: "{{ users }}"
